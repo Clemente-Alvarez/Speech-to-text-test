@@ -33,7 +33,7 @@ for epoch in range(epochs):
         print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
         
 #safe model
-torch.save(model.state_dict(), "weiths.pt")
+torch.save(model.state_dict(), "weights.pt")
 
 while True:
     a,b = map(int,input().split(" "))
