@@ -8,11 +8,15 @@ from xorTrain import XORGateNN
 model = XORGateNN()
 
 #load model
-model.load_state_dict("weights.pt")
+model.load_state_dict(torch.load("weights.pt", weights_only=True))
 model.eval()
 
+print("Input test: ")
 while True:
-    a,b = map(int,input().split(" "))
-    print("Predicted: ")
-    X = torch.tensor([[a,b]],dtype=torch.float32)
-    print(model.forward(X))
+    try:
+        a,b = map(int,input().split(" "))
+        print("Predicted: ")
+        X = torch.tensor([[a,b]],dtype=torch.float32)
+        print(model.forward(X))
+    except ValueError:
+        print("Incorrect input try to put a space between the numbers")

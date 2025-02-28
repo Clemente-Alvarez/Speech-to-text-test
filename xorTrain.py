@@ -34,9 +34,3 @@ for epoch in range(epochs):
         
 #safe model
 torch.save(model.state_dict(), "weights.pt")
-
-while True:
-    a,b = map(int,input().split(" "))
-    print("Predicted: ")
-    X = torch.tensor([[a,b]],dtype=torch.float32)
-    print(model.forward(X))
