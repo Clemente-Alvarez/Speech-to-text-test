@@ -2,14 +2,17 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from xorTrain import XORGateNN
+from xorCreate import XORGateNN
 
-
-model = XORGateNN()
 
 #load model
-model.load_state_dict(torch.load("weights.pt", weights_only=True))
-model.eval()
+try:
+    model = XORGateNN()
+    model.load_state_dict(torch.load("weights.pt"))
+    model.eval()
+except FileNotFoundError:
+    print("Error weights.pt file does not exists")
+    exit()
 
 print("Input test: ")
 while True:

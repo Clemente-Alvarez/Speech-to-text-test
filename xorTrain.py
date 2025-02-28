@@ -2,19 +2,11 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
+from xorCreate import XORGateNN
+
 #Inputs
 X = torch.tensor([[0,0],[0,1],[1,0],[1,1]],dtype=torch.float32) #Inputs
 Y = torch.tensor([[0],[1],[1],[0]],dtype=torch.float32) # Outputs
-
-class XORGateNN(nn.Module):
-  def __init__(self):
-    super(XORGateNN,self).__init__()
-    #ReLU en las capas ocultas y sigmoid en salida
-    self.layer = nn.Sequential(nn.Linear(2,4),nn.ReLU(),nn.Linear(4,1),nn.Sigmoid())
-
-  def forward(self,x):
-    return self.layer(x)
-
 
 model = XORGateNN()
 criterion = nn.BCELoss() # Binary cross entropy. Se puede usar el Mean Square Error
